@@ -326,6 +326,8 @@ find . -type d -name __pycache__ -exec rm -rf {} +
 find . -type f -name "*.pyc" -delete
 ```
 
+<img width="456" height="384" alt="image" src="https://github.com/user-attachments/assets/e0993430-7088-4858-88ad-9e3082754625" />
+
 ## 📧 Support
 
 For issues, questions, or suggestions:
