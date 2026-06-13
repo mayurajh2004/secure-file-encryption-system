@@ -325,6 +325,8 @@ deactivate                            # Exit virtual environment
 find . -type d -name __pycache__ -exec rm -rf {} +
 find . -type f -name "*.pyc" -delete
 ```
+<img width="456" height="384" alt="image" src="https://github.com/user-attachments/assets/e47c4cf5-331c-4cde-9358-8eec1e898ea4" />
+
 
 ## 📧 Support
 
