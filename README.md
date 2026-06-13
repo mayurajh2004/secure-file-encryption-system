@@ -2,7 +2,6 @@
 
 A robust, production-ready Python-based file encryption system designed to provide advanced security features for protecting sensitive data at rest. This system implements industry-standard cryptography with AES-256 encryption and SHA-256 integrity verification.
 
-![Secure File Encryption System GUI](https://raw.githubusercontent.com/mayurajh2004/secure-file-encryption-system/main/docs/gui_screenshot.png)
 
 ## 🔐 Features
 
