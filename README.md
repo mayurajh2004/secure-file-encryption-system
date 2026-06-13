@@ -1,20 +1,21 @@
 # Secure File Encryption System
 
-A robust, production-ready Python-based file encryption system designed to provide advanced security features for protecting sensitive data at rest. This system implements industry-standard cryptographic algorithms to ensure data confidentiality and integrity.
+A robust, production-ready Python-based file encryption system designed to provide advanced security features for protecting sensitive data at rest. This system implements industry-standard cryptography with AES-256 encryption and SHA-256 integrity verification.
 
 ![Secure File Encryption System GUI](https://raw.githubusercontent.com/mayurajh2004/secure-file-encryption-system/main/docs/gui_screenshot.png)
 
 ## 🔐 Features
 
-- **AES-256 Encryption**: Implements AES-256 encryption for maximum security
+- **AES-256 Encryption**: Military-grade encryption standard with 256-bit key length
 - **SHA-256 Integrity Verification**: Built-in integrity checks using SHA-256 hashing
-- **Tamper Detection**: Advanced tamper detection mechanisms
-- **User-Friendly GUI Interface**: Modern, intuitive graphical interface for easy file encryption/decryption
-- **Password-Based Protection**: Strong password-based encryption support
+- **Tamper Detection**: Automatically detects unauthorized modifications and file corruption
+- **User-Friendly GUI Interface**: Modern, dark-themed graphical interface for easy encryption/decryption
+- **Password-Based Protection**: Strong password-based encryption support (PBKDF2 key derivation)
 - **Cross-Platform Support**: Works seamlessly on Windows, macOS, and Linux
-- **Operation Logging**: Comprehensive operation logs for audit trails
+- **Operation Logging**: Comprehensive operation logs with timestamps for audit trails
 - **Performance Optimized**: Efficient encryption for files of all sizes
 - **Error Handling**: Comprehensive error handling and validation
+- **Automatic Folder Creation**: Automatically creates output/, keys/, and data/ directories
 
 ## 📋 System Requirements
 
@@ -22,154 +23,143 @@ A robust, production-ready Python-based file encryption system designed to provi
 - **Operating System**: Linux, macOS, or Windows
 - **RAM**: Minimum 2GB (4GB recommended)
 - **Disk Space**: At least 500MB for installation and operations
+- **GUI Support**: tkinter (usually pre-installed with Python)
 
-## 🐧 Linux Installation Guide
+## 🚀 Quick Start (5 Minutes)
 
-### Step 1: Update System Packages
-
-```bash
-sudo apt update
-sudo apt upgrade -y
-```
-
-### Step 2: Install Python and pip
-
-```bash
-sudo apt install -y python3 python3-pip python3-venv
-```
-
-### Step 3: Install Required System Dependencies
-
-```bash
-sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
-```
-
-For GUI support, also install:
-
-```bash
-sudo apt install -y python3-tk python3-dev
-```
-
-### Step 4: Clone the Repository
+### Step 1: Clone the Repository
 
 ```bash
 git clone https://github.com/mayurajh2004/secure-file-encryption-system.git
 cd secure-file-encryption-system
 ```
 
-### Step 5: Create Virtual Environment
+### Step 2: Create Virtual Environment
 
 ```bash
+# Linux/macOS
 python3 -m venv venv
 source venv/bin/activate
+
+# Windows
+python -m venv venv
+venv\Scripts\activate
 ```
 
-### Step 6: Install Python Dependencies
+### Step 3: Install Dependencies
 
 ```bash
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### Typical requirements.txt contents:
-
-```
-cryptography>=41.0.0
-pycryptodome>=3.18.0
-```
-
-## 🚀 Quick Start
-
-### Running the GUI Application
+### Step 4: Verify Installation
 
 ```bash
-# Make sure virtual environment is activated
-source venv/bin/activate
+python test_folders.py
+```
 
-# Run the application
+This will check all folders, Python files, and verify that the encryption system is working correctly.
+
+### Step 5: Run the Application
+
+```bash
 python main.py
 ```
 
-The GUI window will open with the following interface elements:
+The GUI window will open with the following features:
 
-- **File Selection**: Browse and select files to encrypt/decrypt
-- **Password Field**: Enter a strong password for encryption
-- **Integrity Check**: Compute SHA-256 hash for file verification
-- **Encrypt/Decrypt Buttons**: Perform encryption or decryption operations
-- **Operation Log**: View all performed operations with timestamps
-
-### Using the GUI
-
-1. **Encrypt a File**:
-   - Click the **BROWSE** button to select a file
-   - Enter a strong password in the password field
-   - Click the **ENCRYPT FILE** button
-   - The encrypted file will be saved in the output directory
-   - Check the **OPERATION LOG** for confirmation
-
-2. **Decrypt a File**:
-   - Click the **BROWSE** button to select an encrypted file
-   - Enter the same password used during encryption
-   - Click the **DECRYPT FILE** button
-   - The decrypted file will be saved in the output directory
-
-3. **Verify File Integrity**:
-   - Select a file using the **BROWSE** button
-   - Click the **COMPUTE HASH** button
-   - The SHA-256 hash will be displayed and saved to the log
-
-### Command Line Usage
-
-```bash
-# Activate virtual environment first
-source venv/bin/activate
-
-# Encrypt a file
-python main.py encrypt --input myfile.txt --output myfile.enc --password mypassword
-
-# Decrypt a file
-python main.py decrypt --input myfile.enc --output myfile.txt --password mypassword
-
-# Compute file hash
-python main.py hash --input myfile.txt
-```
+- **📂 File Selection**: Browse and select any file to encrypt/decrypt
+- **🔑 Password Field**: Enter a strong password with show/hide option
+- **🔐 ENCRYPT FILE**: Encrypt files with AES-256 encryption
+- **🔓 DECRYPT FILE**: Decrypt .enc files with integrity verification
+- **✅ COMPUTE HASH**: Verify file integrity with SHA-256
+- **📋 OPERATION LOG**: Real-time logging of all operations
+- **⏳ Progress Bar**: Visual feedback during encryption/decryption
 
 ## 📁 Project Structure
 
 ```
 secure-file-encryption-system/
 ├── src/
-│   ├── __init__.py
-│   ├── encryptor.py          # Core encryption logic
-│   ├── key_manager.py         # Key generation and management
-│   ├── gui.py                 # GUI implementation
-│   └── utils.py               # Utility functions
-├── tests/
-│   ├── __init__.py
-│   ├── test_encryption.py     # Encryption tests
-│   └── test_integrity.py      # Integrity check tests
-├── main.py                     # Application entry point
-├── requirements.txt            # Python dependencies
-├── LICENSE                     # License information
-├── README.md                   # This file
-└── docs/
-    └── gui_screenshot.png      # GUI preview
+│   ├── __init__.py              # Package initialization
+│   ├── encryptor.py             # Core AES-256 encryption logic
+│   ├── gui.py                   # Professional GUI implementation
+│   └── key_manager.py           # RSA key generation and management
+├── output/                      # Auto-created: Encrypted files saved here
+├── keys/                        # Auto-created: Encryption keys & hashes saved here
+├── data/                        # Auto-created: Test files directory
+├── main.py                      # Application entry point (GUI launcher)
+├── test_folders.py              # System verification and testing script
+├── requirements.txt             # Python dependencies (cryptography, pycryptodome)
+├── LICENSE                      # MIT License
+└── README.md                    # This file
 ```
+
+## 🔐 How to Use the GUI
+
+### 1. **Encrypt a File**
+   - Click the **📂 BROWSE** button to select a file
+   - Enter a strong password in the **🔑 PASSWORD** field
+   - Click the **🔒 ENCRYPT FILE** button
+   - The encrypted file will be saved in the `output/` folder
+   - A hash file will be saved in the `keys/` folder
+   - Check the **📋 OPERATION LOG** for confirmation
+
+### 2. **Decrypt a File**
+   - Click the **📂 BROWSE** button to select an encrypted file (`.enc`)
+   - Enter the **exact same password** used during encryption
+   - Click the **🔓 DECRYPT FILE** button
+   - The system will verify file integrity automatically
+   - If tampering is detected, you'll receive an alert
+   - The decrypted file will be saved in the `output/` folder
+
+### 3. **Verify File Integrity**
+   - Select any file using the **📂 BROWSE** button
+   - The **SHA-256 hash** will be automatically computed
+   - Click **✅ COMPUTE HASH** for full hash display
+   - Use the hash to verify file integrity later
+
+## ⚙️ Command Line Usage
+
+### Test the Encryption System
+```bash
+python src/encryptor.py
+```
+This will:
+- Create a test file in `data/` folder
+- Encrypt it with a sample password
+- Decrypt it and verify integrity
+- Show all operations in the console
+
+### Generate RSA Keys
+```bash
+python src/key_manager.py
+```
+This will:
+- Generate RSA-2048 key pair
+- Save private key to `keys/private_key.pem`
+- Save public key to `keys/public_key.pem`
 
 ## 🔑 Key Features Explained
 
 ### AES-256 Encryption
-- Military-grade encryption standard
+- Military-grade encryption standard (NIST approved)
 - 256-bit key length for maximum security
+- PBKDF2 key derivation (100,000 iterations)
+- CBC mode with random IV for each file
 - Protects data confidentiality
 
 ### SHA-256 Integrity Check
 - Verifies file hasn't been tampered with
 - Creates unique hash for each file
+- Stored with encrypted file
+- Automatically verified during decryption
 - Ensures data integrity
 
 ### Tamper Detection
 - Automatically detects unauthorized modifications
+- Compares stored hash with computed hash during decryption
 - Alerts user to potential security breaches
 - Prevents use of corrupted encrypted files
 
@@ -181,6 +171,7 @@ secure-file-encryption-system/
 - Regularly backup important files before encryption
 - Keep the application and Python packages updated
 - Use on trusted, secure computers
+- Remember your encryption password (it cannot be recovered)
 
 ❌ **Don'ts**:
 - Never share passwords unencrypted
@@ -188,97 +179,104 @@ secure-file-encryption-system/
 - Avoid using weak or common passwords
 - Don't store passwords in plain text files
 - Never use the same password for multiple sensitive files
+- Don't modify encrypted files manually
 
 ## 🧪 Testing
 
-Run the test suite to verify everything is working:
-
+### Verify System Installation
 ```bash
-# Activate virtual environment
-source venv/bin/activate
+python test_folders.py
+```
 
-# Run all tests
-python -m pytest tests/
+Expected output:
+```
+✅ Folder Structure            PASS
+✅ Python Files                PASS
+✅ Imports                     PASS
+✅ Encryptor                   PASS
+✅ KeyManager                  PASS
 
-# Run with verbose output
-python -m pytest tests/ -v
+🎉 ALL TESTS PASSED! System is ready to use.
+```
 
-# Run with coverage report
-python -m pytest tests/ --cov=src --cov-report=html
+### Test Encryption/Decryption
+```bash
+python src/encryptor.py
 ```
 
 ## 📊 GUI Interface Overview
 
-The application provides a sleek, dark-themed interface with:
+The application provides a professional, dark-themed interface with:
 
-- **File Selection Area**: Browse and select files
-- **Password Field**: Secure password input with show/hide option
-- **Integrity Check Section**: SHA-256 hash computation
-- **Action Buttons**: 
-  - 🔐 ENCRYPT FILE (Blue)
+- **🎨 Modern Design**: Dark theme with color-coded sections
+- **📁 File Selection Area**: Browse and select files with visual feedback
+- **🔑 Password Field**: Secure password input with show/hide option
+- **🔐 Integrity Check Section**: SHA-256 hash computation and display
+- **🔘 Action Buttons**: 
+  - 🔒 ENCRYPT FILE (Blue)
   - 🔓 DECRYPT FILE (Pink)
   - 🗑️ CLEAR ALL (Gray)
-- **Operation Log**: Real-time logging of all operations with timestamps
-- **Progress Bar**: Visual feedback during encryption/decryption
-
-## ⚙️ Advanced Configuration
-
-### Custom Output Directory
-
-Edit the configuration in `src/utils.py`:
-
-```python
-OUTPUT_DIRECTORY = "/home/user/encrypted_files"
-```
-
-### Password Requirements
-
-Modify password strength requirements in `src/key_manager.py`:
-
-```python
-MIN_PASSWORD_LENGTH = 12
-REQUIRE_SPECIAL_CHARS = True
-```
+- **📋 Operation Log**: Real-time logging with timestamps and color coding
+- **⏳ Progress Bar**: Visual feedback during encryption/decryption
+- **📊 Status Bar**: Shows current operation status
 
 ## 🚨 Troubleshooting
 
 ### Issue: "Module not found" error
-
-**Solution**: Ensure virtual environment is activated:
+**Solution**: Ensure virtual environment is activated and dependencies are installed:
 ```bash
-source venv/bin/activate
+source venv/bin/activate  # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
 ```
 
 ### Issue: GUI won't open
-
-**Solution**: Install tkinter for your Linux distribution:
+**Solution**: Install tkinter for your system:
 ```bash
+# Linux (Debian/Ubuntu)
 sudo apt install python3-tk
+
+# Linux (Fedora/RHEL)
+sudo dnf install python3-tkinter
+
+# macOS
+brew install python-tk@3.9
+
+# Windows: Reinstall Python with "tcl/tk and IDLE" option checked
 ```
 
 ### Issue: Permission denied errors
-
-**Solution**: Check file permissions:
+**Solution**: Check and fix file permissions:
 ```bash
-chmod 755 main.py
-chmod 755 -R src/
+chmod +x main.py
+chmod -R 755 src/
+chmod -R 755 output/
 ```
 
 ### Issue: "Cryptography module not found"
-
 **Solution**: Reinstall cryptography with build tools:
 ```bash
 pip install --upgrade --force-reinstall cryptography
 ```
 
+### Issue: Encrypted files not appearing in output/
+**Solution**: Check that the output/ folder exists and is writable:
+```bash
+python test_folders.py
+```
+
 ## 📚 Documentation
 
-For API reference and advanced usage examples, check the inline code documentation:
-
+### API Reference
+For inline code documentation:
 ```bash
-python -c "import src.encryptor; help(src.encryptor.Encryptor)"
+python -c "import src.encryptor; help(src.encryptor.FileEncryptor)"
+python -c "import src.key_manager; help(src.key_manager.KeyManager)"
 ```
+
+### File Structure
+- `src/encryptor.py`: Contains `FileEncryptor` class with encryption/decryption methods
+- `src/gui.py`: Contains `EncryptionGUI` class for the GUI interface
+- `src/key_manager.py`: Contains `KeyManager` class for RSA key management
 
 ## 🤝 Contributing
 
@@ -301,39 +299,40 @@ This software is provided "as is" without warranty of any kind. Users are respon
 - Remembering encryption passwords
 - Ensuring compliance with applicable laws and regulations regarding encryption
 - Regular security updates and maintenance
+- Testing the software with non-critical files first
 
 The authors assume no liability for data loss or damages resulting from the use of this software.
 
 ## 🆘 Common Commands Reference
 
 ```bash
-# Setup
+# ===== SETUP =====
 python3 -m venv venv
-source venv/bin/activate
+source venv/bin/activate              # Linux/macOS
+venv\Scripts\activate                 # Windows
 pip install -r requirements.txt
 
-# Run application
-python main.py
+# ===== RUN APPLICATION =====
+python main.py                        # Start GUI
 
-# Run tests
-python -m pytest tests/ -v
+# ===== TESTING =====
+python test_folders.py                # Verify installation
+python src/encryptor.py               # Test encryption
+python src/key_manager.py             # Test key generation
 
-# Deactivate virtual environment
-deactivate
-
-# Clean up Python cache
+# ===== CLEANUP =====
+deactivate                            # Exit virtual environment
 find . -type d -name __pycache__ -exec rm -rf {} +
 find . -type f -name "*.pyc" -delete
 ```
-
-<img width="456" height="384" alt="image" src="https://github.com/user-attachments/assets/e0993430-7088-4858-88ad-9e3082754625" />
 
 ## 📧 Support
 
 For issues, questions, or suggestions:
 - Open an [Issue](https://github.com/mayurajh2004/secure-file-encryption-system/issues)
-- Check existing documentation
-- Review the operation logs for error details
+- Check existing documentation in this README
+- Review the operation logs in the GUI for error details
+- Run `python test_folders.py` to diagnose system issues
 
 ## 👨‍💻 Author
 
@@ -345,4 +344,5 @@ For issues, questions, or suggestions:
 
 **Last Updated**: June 2026  
 **Version**: 1.0.0  
-**Status**: Active & Maintained
+**Status**: Active & Maintained ✅  
+**Tested On**: Windows 10+, Ubuntu 20.04+, macOS 10.15+
