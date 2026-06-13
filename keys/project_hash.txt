@@ -1,0 +1,13 @@
+============================================================
+SECURE FILE ENCRYPTION SYSTEM - INTEGRITY HASH
+============================================================
+
+Original File: project.txt
+Encrypted File: project_encrypted.enc
+Date Encrypted: 2026-06-04 12:27:36.951546
+
+SHA-256 HASH: cb406c7d3a1ae713cf8573dcd794468364d5aa9cbbef3a679db4e129d231ed45
+
+============================================================
+⚠️ IMPORTANT: Use this hash to verify file integrity
+============================================================
